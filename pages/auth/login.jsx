@@ -36,7 +36,6 @@ const schema = yup.object().shape({
 
 export default function Login() {
   const router = useRouter();
-  console.log(router.query.returnUrl?.toString() || Settings.URLS.LOGIN_REDIRECT_URL);
   const [seePassword, setSee] = useState(false);
   const [invalidCredentials, setInvalidCredentials] = useState(false);
 
