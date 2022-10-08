@@ -12,8 +12,8 @@ new_id=$(sudo docker images next_app -q)
 
 if [ $id == $new_id ]
     then
-    sudo docker rmi $(sudo docker images --filter "dangling=true")
+    sudo docker rmi $(sudo docker images --filter "dangling=true" -q)
     else
     sudo docker image rm $id
-    sudo docker rmi $(sudo docker images --filter "dangling=true")
+    sudo docker rmi $(sudo docker images --filter "dangling=true" -q)
 fi
