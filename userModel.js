@@ -26,6 +26,10 @@ var user = new Schema({
     type: Date,
     default: Date.now
   },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   isAdmin: {
     type: Boolean,
     default: false
