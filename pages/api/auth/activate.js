@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import connectDB from '../../../_utils/mongoose/mongodb';
-import Task from '../../../_utils/mongoose/models/task';
+import User from '../../../_utils/mongoose/models/user';
 async function handler(req, res) {
-    if (req.method === 'GET') {
+    if (req.method === 'POST') {
         var data = null
         try {
             const token = req.headers.authorization.split(' ')[1];
@@ -14,13 +14,26 @@ async function handler(req, res) {
                 return;
             }
         } catch (err) { res.status(400).json({ error: 'Provide Token in authorization header' }); return; }
-        if (!(data.isAdmin || data._id == req.query.id)) {
-            res.status(400).json({ error: "Invalid Permission" })
+        if (!req.body) {
+            res.status(400).json({ error: 'BadRequest' });
             return;
         }
+        if (!data.isAdmin) {
+            res.status(400).json({ error: "User not Admin" })
+            return;
+        }
+        const { id } = req.body;
+        console.log(id);
         try {
-            const task = await Task.find({ userID: req.query.id }, { __v: 0, _id: 0 })
-            res.status(200).json(task)
+            const user = await User.findOne({ _id: id })
+            if (!user) {
+                res.status(400).json({ error: "User not Found" })
+            }
+            else {
+                const updatedUser = await User.findByIdAndUpdate(id, { isActive: true }, { new: true })
+                const { password, __v, ...other } = updatedUser._doc
+                res.status(200).json(other)
+            }
         }
         catch (err) { console.error(err); res.status(500).json({ error: "Internal Server Error" }) }
     }

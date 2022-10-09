@@ -11,6 +11,8 @@ module.exports = {
       },
       zIndex: {
         "-1": "-1",
+        "1000": "1000",
+        "1001": "1001",
       },
       height: {
         main: "calc(100vh - 4rem)",

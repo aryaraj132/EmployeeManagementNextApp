@@ -69,6 +69,7 @@ export default function Login() {
       .catch((error) => {
         console.log(error);
         if (error instanceof BadRequest) {
+          toast.error(error.errors.error);
           setInvalidCredentials(true);
         } else {
           toast.error("SOMETHING WENT WRONG");
@@ -117,20 +118,21 @@ export default function Login() {
   // };
 
   return (
-    <div className="shadow-xl mt-32 p-10 text-gray-700 rounded-lg max-w-xl max-h-max mx-auto">
+    <section className="min-h-full bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
+    <div className="shadow-xl mt-32 p-10 bg-white text-gray-700 rounded-lg max-w-xl max-h-max mx-auto">
       <h2 className="text-3xl font-medium">Sign In</h2>
-      <div className="py-4">
+      <div className="py-4 z-1001 ">
         <div className="grid grid-cols-1 gap-6">
           <form className="p-6 space-y-10"
             onSubmit={handleSubmit(onSubmit)}>
             <div className="relative border-b-2 focus-within:border-blue-500">
               <input {...register('email')} type="text" name="email" autoComplete="login" placeholder=" " className="block w-full appearance-none focus:outline-none bg-transparent" />
-              <label for="email" className="absolute top-0 -z-1 duration-300 origin-0">Email</label>
+              <label for="email" className="absolute top-0 duration-300 origin-0 pointer-events-none">Email</label>
             </div>
               <label className='text-sm min-h-[18px] mt-2 text-[red]' >{errors.email?.message}</label>
             <div className="relative border-b-2 focus-within:border-blue-500">
               <input {...register('password')} id="password" type={seePassword ? "text" : "password"} name="password" placeholder=" " className="block w-[90%] appearance-none focus:outline-none bg-transparent" />
-              <label for="password" className="absolute top-0 -z-1 duration-300 origin-0">Password</label>
+              <label for="password" className="absolute top-0 duration-300 origin-0 pointer-events-none">Password</label>
               <button 
                 type='button'
                 onClick={() => setSee(o => !o)}
@@ -170,5 +172,6 @@ export default function Login() {
         </div>
       </div>
     </div>
+    </section>
   );
 }

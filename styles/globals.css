@@ -26,3 +26,7 @@ input:not(:placeholder-shown) ~ label {
 input:focus-within ~ label {
   @apply text-blue-500;
 }
+.popup-overlay{
+  background-color: transparent !important;
+  backdrop-filter: blur(10px) !important;
+}

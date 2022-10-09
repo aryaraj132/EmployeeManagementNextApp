@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="description" content="Aryan's Hackathon project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <section className='bg-red-700 h-main'></section>
+      <section className="min-h-full bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2"></section>
     </div>
   )
 }

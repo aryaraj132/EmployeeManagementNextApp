@@ -1,7 +1,7 @@
 const URLS = {
     HOME_URL: '/',
     LOGIN_URL: '/auth/login',
-    LOGIN_REDIRECT_URL: '/',
+    LOGIN_REDIRECT_URL: '/dashboard',
   };
   
   const ANONYMOUS_REQUIRED_PATHS = new Set([

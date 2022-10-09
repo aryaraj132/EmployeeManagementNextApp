@@ -51,36 +51,31 @@ export default function Nav() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/">
-                <img className="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+              <h1 className="text-3xl"><span className="text-cyan-500">Taksh </span><span className="text-teal-500">Shila</span></h1>
               </Link>
             </div>
+
+          </div>
+          <div className="flex items-center">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/dashboard"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a></Link>
-
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
-
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
-
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
+                <Link href="/dashboard"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a></Link>
               </div>
             </div>
-          </div>
-          <div className="hidden md:block">
+            <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
               <div className="relative ml-3">
                 {!userData ? (
                   <Link href="/auth/login">
-                    <a className="py-2 px-4 text-md bg-teal-500 text-white rounded-lg font-medium ml-8">
+                    <a className="py-2 px-4 text-md bg-teal-500 text-white rounded-lg font-medium">
                       Log In
                     </a>
                   </Link>
                 ) : (
-                  <button type="button" onClick={signOut} className="px-4 py-2 text-md bg-teal-500 text-white rounded-lg font-medium ml-8" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                  <button type="button" onClick={signOut} className="px-4 py-2 text-md bg-teal-500 text-white rounded-lg font-medium" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
                 )}
               </div>
+            </div>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
@@ -135,15 +130,7 @@ export default function Nav() {
         {(ref) => (
           <div className="md:hidden" id="mobile-menu">
             <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <Link href="/dashboard"><a className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a></Link>
-
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
-
-              <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
+              <Link href="/dashboard"><a className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a></Link>
             </div>
             <div className="border-t border-gray-700 pt-4 pb-3">
               {!userData ? (
