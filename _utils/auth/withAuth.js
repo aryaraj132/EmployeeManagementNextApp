@@ -41,7 +41,7 @@ const withAuth = (WrappedComponent) => {
                 if (!!data.setReturnUrl) {
                     router.push({
                         pathname: Settings.URLS.LOGIN_URL,
-                        query: { returnUrl: router.asPath },
+                        // query: { returnUrl: router.asPath },
                     });
                 } else {
                     router.push(data.redirectTo);

@@ -37,7 +37,7 @@ export default function ResetPasswordPopup() {
     return (
         <Popup
             trigger={
-                <button class="bg-pink-500 sm:float-right active:bg-pink-600 uppercase text-white font-semibold hover:shadow-md shadow text-md px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+                <button className="bg-pink-500 sm:float-right active:bg-pink-600 uppercase text-white font-semibold hover:shadow-md shadow text-md px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
                     Reset Password
                 </button>
             }

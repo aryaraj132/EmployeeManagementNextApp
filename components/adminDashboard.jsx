@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { fetchWrapper } from "../_utils/FetchWrapper";
 import { IoIosArrowDropright } from 'react-icons/io';
 import AddEmployeePopup from "../components/addEmployeePopup";
+import Link from "next/link";
 export default function AdminDashboard() {
     const [employees, setEmployees] = useState();
     useEffect(() => {
         fetchWrapper.get('/api/auth/getemployee')
             .then((res) => {
-                console.log(res);
                 setEmployees(res);
             })
             .catch((err) => {
@@ -112,7 +112,7 @@ export default function AdminDashboard() {
                                                 }
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="#" className="text-indigo-600 hover:text-indigo-900">Show Details</a>
+                                                <Link href={"dashboard/"+employee._id}><a className="text-indigo-600 hover:text-indigo-900">Show Details</a></Link>
                                             </td>
                                         </tr>
                                     ))}
@@ -163,7 +163,7 @@ export default function AdminDashboard() {
                                                 }
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <a href="#" className="text-indigo-600 hover:text-indigo-900">Show Details</a>
+                                                <Link href={"dashboard/"+employee._id}><a className="text-indigo-600 hover:text-indigo-900">Show Details</a></Link>
                                             </td>
 
                                         </tr>

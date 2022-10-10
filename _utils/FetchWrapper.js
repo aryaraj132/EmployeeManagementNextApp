@@ -11,8 +11,6 @@ function getHeaders() {
     const authHeader = 'Token ' + token;
     headers.Authorization = authHeader;
   }
-
-  console.log(headers);
   return headers;
 }
 

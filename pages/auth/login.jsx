@@ -51,7 +51,6 @@ export default function Login() {
     setInvalidCredentials(false);
     return fetchWrapper.post('/api/auth/login', { email, password })
       .then((res) => {
-        console.log(res);
         const user = jwt.decode(res.token)
         const expiryDate = new Date(user.exp*1000);
         const userData = {
