@@ -1,5 +1,48 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Build Process
+
+* Using npm only
+
+1. Clone this repository
+2. install Node and npm
+3. run command "npm install"
+4. Create a MangoDB Cluster
+5. set up mangodb cluster for your local ip
+6. Save credentials in your env file accordingly
+.env file
+```
+DB_URI=
+```
+.env.local file
+```
+NEXT_PUBLIC_JWT_SECRET=
+NEXT_PUBLIC_DB_URI=
+```
+7. run command "npm start" to start server
+8. run command "npm run dev" before editing any react file
+9. Done !!
+
+* Using Docker
+
+1. Clone this repository
+2. Install Docker in your
+3. Create a MangoDB Cluster
+4. set up mangodb cluster for your local ip
+5. Save credentials in your env file accordingly
+.env file
+```
+DB_URI=
+```
+.env.local file
+```
+NEXT_PUBLIC_JWT_SECRET=
+NEXT_PUBLIC_DB_URI=
+```
+6. run command sudo chmod +x exec.sh
+7. run ./exec.sh
+
+All Done app should be running on port 3000
 ## Getting Started
 
 First, run the development server:
