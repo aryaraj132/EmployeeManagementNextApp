@@ -75,7 +75,7 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
+      {/* <div className="flex flex-col">
         {tasks && tasks.map((task) => {
           return (
             <div className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
@@ -90,7 +90,7 @@ export default function Index() {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -10,7 +10,7 @@ export default function EmployeeDashboard() {
   const [tasks, setTasks] = useState();
   const userData = useRecoilValue(userState);
   useEffect(() => {
-    console.log(userData.user._id);
+    if(userData.user._id){
     fetchWrapper.get('/api/task/gettask?id=' + userData.user._id)
       .then((res) => {
         console.log(res);
@@ -19,7 +19,8 @@ export default function EmployeeDashboard() {
       .catch((err) => {
         console.log(err);
       })
-  }, [])
+    }
+  }, [userData])
   return (
     <section className="min-h-section bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
       <div class="container mx-auto px-4">
@@ -75,7 +76,7 @@ export default function EmployeeDashboard() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
+      {/* <div className="flex flex-col">
         {tasks && tasks.map((task) => {
           return (
             <div className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
@@ -90,7 +91,7 @@ export default function EmployeeDashboard() {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </section>
   );
 }
