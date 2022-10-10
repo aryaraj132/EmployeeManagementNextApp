@@ -91,6 +91,11 @@ async function handler(req, res) {
                     meeting: w4meetingTotal,
                     break: w4breakTotal
                 },
+                labeled:{
+                Work:[w1workTotal,w2workTotal,w3workTotal,w4workTotal],
+                Break:[w1breakTotal,w2breakTotal,w3breakTotal,w4breakTotal],
+                Meeting:[w1meetingTotal,w2meetingTotal,w3meetingTotal,w4meetingTotal],
+            }
             }
     
             res.status(200).json(data)

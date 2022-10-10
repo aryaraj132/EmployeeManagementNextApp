@@ -4,8 +4,8 @@ import { IoIosArrowDropright, IoMdCall, IoMdMail } from 'react-icons/io';
 import { userState } from "../_recoil/userState";
 import { useRecoilValue } from "recoil";
 import { Line, Pie } from 'react-chartjs-2';
-import { Chart, ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler } from 'chart.js'
-Chart.register(ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler);
+import { Chart, ArcElement, LineElement, LinearScale, CategoryScale, PointElement,BarElement , Title, Tooltip, Legend, Filler } from 'chart.js'
+Chart.register(ArcElement, LineElement, LinearScale, CategoryScale, PointElement,BarElement ,Title, Tooltip, Legend, Filler);
 const options = {
     scales: {
         y: {

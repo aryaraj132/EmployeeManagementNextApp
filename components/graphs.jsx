@@ -3,16 +3,51 @@ import { fetchWrapper } from "../_utils/FetchWrapper";
 import { IoIosArrowDropright, IoMdCall, IoMdMail } from 'react-icons/io';
 import { userState } from "../_recoil/userState";
 import { useRecoilValue } from "recoil";
-import { Line, Pie } from 'react-chartjs-2';
-import { Chart, ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler } from 'chart.js'
-Chart.register(ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler);
+import { Bar, Pie } from 'react-chartjs-2';
+// import { Chart, ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler } from 'chart.js'
+import Chart from 'chart.js/auto';
+// Chart.register(ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler);
 const options = {
+    plugins: {
+        title: {
+            display: true,
+            text: 'Weekly Task distribution of this month',
+        },
+    },
+    responsive: true,
     scales: {
+        x: {
+            stacked: true,
+        },
         y: {
-            beginAtZero: true
-        }
-    }
-}
+            stacked: true,
+        },
+    },
+};
+
+const labels = ['Week1 (1-7)', 'Week2 (8-14)', 'Week3 (15-21)', 'Week4 (22-EOM)'];
+
+export const data = {
+    labels,
+    datasets: [
+        {
+            label: 'Work',
+            data: [50, 90, 80, 30],
+            backgroundColor: 'rgb(255, 99, 132)',
+        },
+        {
+            label: 'Break',
+            data: labels.map(() => 50),
+            backgroundColor: 'rgb(75, 192, 192)',
+        },
+        {
+            label: 'Meeting',
+            data: labels.map(() => 70),
+            backgroundColor: 'rgb(53, 162, 235)',
+        },
+    ],
+};
+
 export default function Graphs(props) {
     const nowDate = new Date();
     var date = nowDate.getFullYear() + '-' + (nowDate.getMonth() + 1) + '-' + nowDate.getDate()
@@ -21,8 +56,10 @@ export default function Graphs(props) {
     const [pie2Date, setPie2Date] = useState(date2);
     const [pie1Data, setPie1Data] = useState();
     const [pie2Data, setPie2Data] = useState();
+    const [graphData, setGraphData] = useState()
     const [drawPie1, setDrawPie1] = useState();
     const [drawPie2, setDrawPie2] = useState();
+    const [drawGraph, setDrawGraph] = useState();
     const [toAdd, setToAdd] = useState('Today');
     const userData = useRecoilValue(userState);
     useEffect(() => {
@@ -76,6 +113,31 @@ export default function Graphs(props) {
         }
     }, [pie2Data])
     useEffect(() => {
+        if (graphData) {
+            var data = {
+                labels,
+                datasets: [
+                    {
+                        label: 'Work',
+                        data: graphData.Work,
+                        backgroundColor: 'rgb(255, 99, 132)',
+                    },
+                    {
+                        label: 'Break',
+                        data: graphData.Break,
+                        backgroundColor: 'rgb(75, 192, 192)',
+                    },
+                    {
+                        label: 'Meeting',
+                        data: graphData.Meeting,
+                        backgroundColor: 'rgb(53, 162, 235)',
+                    },
+                ],
+            };
+            setDrawGraph(data);
+        }
+    }, [graphData])
+    useEffect(() => {
         if (!userData.user.isAdmin) {
             fetchWrapper.post('/api/task/taskdata', { id: userData.user._id, date: pie1Date })
                 .then((res) => {
@@ -87,6 +149,13 @@ export default function Graphs(props) {
             fetchWrapper.post('/api/task/taskdata', { id: userData.user._id, date: pie2Date })
                 .then((res) => {
                     setPie2Data(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+            fetchWrapper.post('/api/task/weeklytaskdata', { id: userData.user._id })
+                .then((res) => {
+                    setGraphData(res.labeled);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -106,8 +175,15 @@ export default function Graphs(props) {
                 .catch((err) => {
                     console.log(err);
                 })
+            fetchWrapper.post('/api/task/weeklytaskdata', { id: props.id })
+                .then((res) => {
+                    setGraphData(res.labeled);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
-    }, [userData, pie1Date, pie2Date, props.id])
+    }, [userData, pie1Date, pie2Date, graphData, props.id])
     return (
         <>
             <div className="container mx-auto px-4">
@@ -220,6 +296,16 @@ export default function Graphs(props) {
                                 }}
                             >
                                 Yesterday
+                            </div>
+                            <div
+                                className={`flex items-center cursor-pointer justify-center ${toAdd == 'Weekly' &&
+                                    'text-indigo-800 border-indigo-800 border-b-2'
+                                    }`}
+                                onClick={() => {
+                                    setToAdd('Weekly');
+                                }}
+                            >
+                                Weekly
                             </div>
                         </div>
                         {toAdd == 'Yesterday' &&
@@ -383,6 +469,22 @@ export default function Graphs(props) {
                                                     </div>
                                                 )
                                             })}
+                                        </div>
+                                    </>
+                                }
+                            </>
+                        }
+                        {toAdd == 'Weekly' &&
+                            <>
+                                {pie1Data &&
+                                    <>
+                                        
+                                        <div className="flex flex-col">
+                                            {drawPie1 &&
+                                                <div className="mx-auto w-6/12 flex flex-row justify-center">
+                                                    <Bar options={options} data={drawGraph} />;
+                                                </div>
+                                            }
                                         </div>
                                     </>
                                 }
