@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useEffect, useState } from 'react';
-const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 const schema = yup.object().shape({
     description: yup.string().required('This field is required'),
     starTime: yup.string().required('This field is required'),
@@ -57,7 +56,7 @@ export default function AddTaskPopup({ tasks, setTasks }) {
             {(close) => (
                 <div className='h-auto'>
                     <div className="flex items-center justify-between px-4 py-2 bg-white border-b-2">
-                        <h1 className="text-2xl font-medium text-primary">Add Employees</h1>
+                        <h1 className="text-2xl font-medium text-primary">Add Tasks</h1>
                         <AiOutlineClose
                             className="text-2xl  text-red-500 hover:text-red-800 transition-all cursor-pointer"
                             onClick={close}

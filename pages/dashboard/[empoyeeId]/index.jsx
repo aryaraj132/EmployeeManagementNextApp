@@ -6,7 +6,7 @@ import ResetPasswordPopup from "../components/resetPasswordPopup";
 import UpdateProfilePopup from "./updateProfilePopup";
 import { userState } from "../_recoil/userState";
 import { useRecoilValue } from "recoil";
-export default function EmployeeDashboard() {
+export default function Index() {
   const [tasks, setTasks] = useState();
   const userData = useRecoilValue(userState);
   useEffect(() => {

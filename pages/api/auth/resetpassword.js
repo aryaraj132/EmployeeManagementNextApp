@@ -28,7 +28,7 @@ async function handler(req, res) {
             else {
                 const validatePass = await bcrypt.compare(oldPassword, user.password)
                 if(!validatePass){
-                    res.status(400).json({error:"Password Did not match"})
+                    res.status(400).json({error:"Old Password Incorrect"})
                 }else{
                 const salt = await bcrypt.genSalt(10);
                 const hashedPass = await bcrypt.hash(newPassword, salt)

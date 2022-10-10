@@ -45,7 +45,7 @@ export default function AdminDashboard() {
             })
     }
     return (
-        <section className="min-h-full bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
+        <section className="min-h-section bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
             <h1>Admin Dashboard</h1>
             <AddEmployeePopup employees={employees} setEmployees={setEmployees} />
             <div className="flex flex-col">

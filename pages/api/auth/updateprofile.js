@@ -13,23 +13,24 @@ async function handler(req, res) {
                 res.status(400).json({ error: 'Token Expired' });
                 return;
             }
+
         } catch (err) { res.status(400).json({ error: 'Provide Token in authorization header' }); return; }
         if (!req.body) {
             res.status(400).json({ error: 'BadRequest' });
             return;
         }
-        if (!data.isAdmin) {
-            res.status(400).json({ error: "User not Admin" })
+        const { name, department, contact } = req.body;
+        if (!name || !department || !contact) {
+            res.status(400).json({ error: 'Please fill all the fields' });
             return;
         }
-        const { id } = req.body;
         try {
-            const user = await User.findOne({ _id: id })
+            const user = await User.findOne({ _id: data._id })
             if (!user) {
                 res.status(400).json({ error: "User not Found" })
             }
             else {
-                const updatedUser = await User.findByIdAndUpdate(id, { isActive: true }, { new: true })
+                const updatedUser = await User.findByIdAndUpdate(user._id, { name: name, department:department, contact,contact }, { new: true })
                 const { password, __v, ...other } = updatedUser._doc
                 res.status(200).json(other)
             }

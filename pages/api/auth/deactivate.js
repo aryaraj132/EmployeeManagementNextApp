@@ -23,7 +23,6 @@ async function handler(req, res) {
             return;
         }
         const { id } = req.body;
-        console.log(id);
         try {
             const user = await User.findOne({ _id: id })
             if (!user) {

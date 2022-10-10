@@ -118,8 +118,8 @@ export default function Login() {
   // };
 
   return (
-    <section className="min-h-full bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
-    <div className="shadow-xl mt-32 p-10 bg-white text-gray-700 rounded-lg max-w-xl max-h-max mx-auto">
+    <section className="min-h-section bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
+    <div className="shadow-xl my-32 p-10 bg-white text-gray-700 rounded-lg max-w-xl max-h-max mx-auto">
       <h2 className="text-3xl font-medium">Sign In</h2>
       <div className="py-4 z-1001 ">
         <div className="grid grid-cols-1 gap-6">
