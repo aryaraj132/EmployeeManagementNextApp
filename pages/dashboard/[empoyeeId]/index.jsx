@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { fetchWrapper } from "../_utils/FetchWrapper";
+import { fetchWrapper } from "../../../_utils/FetchWrapper";
 import { IoIosArrowDropright, IoMdCall, IoMdMail } from 'react-icons/io';
-import AddTaskPopup from "../components/addTaskPopup";
-import ResetPasswordPopup from "../components/resetPasswordPopup";
-import UpdateProfilePopup from "./updateProfilePopup";
-import { userState } from "../_recoil/userState";
+import AddTaskPopup from "../../../components/addTaskPopup";
+import ResetPasswordPopup from "../../../components/resetPasswordPopup";
+import UpdateProfilePopup from "../../../components/updateProfilePopup";
+import { userState } from "../../../_recoil/userState";
 import { useRecoilValue } from "recoil";
 export default function Index() {
   const [tasks, setTasks] = useState();
   const userData = useRecoilValue(userState);
   useEffect(() => {
-    console.log(userData.user._id);
+    if(userData.user._id){
     fetchWrapper.get('/api/task/gettask?id=' + userData.user._id)
       .then((res) => {
         console.log(res);
@@ -19,7 +19,8 @@ export default function Index() {
       .catch((err) => {
         console.log(err);
       })
-  }, [])
+    }
+  }, [userData])
   return (
     <section className="min-h-section bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
       <div class="container mx-auto px-4">
