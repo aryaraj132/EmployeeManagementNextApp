@@ -43,6 +43,14 @@ NEXT_PUBLIC_DB_URI=
 7. run ./exec.sh
 
 All Done app should be running on port 3000
+
+
+#### Setup Admin Account 
+
+1. Open script.js in root directory
+2. change the variables adminName, adminEmail, adminPassword and save
+3. Run command npm run script (automatically done if using docker)
+
 ## Getting Started
 
 First, run the development server:
