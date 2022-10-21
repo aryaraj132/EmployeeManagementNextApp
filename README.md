@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Employee Management App
+
+An app where employers can keep a check on their employees’ work done every particular day. Graphical representation of each employees’ work with pie charts (daily) and bar graph (weekly).
 
 Live @ [https://employee-manage.araj.tk/](https://employee-manage.araj.tk/)
 
