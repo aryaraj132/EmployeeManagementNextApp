@@ -51,7 +51,7 @@ export default function Nav() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/">
-              <h1 className="text-3xl"><span className="text-cyan-500">Taksh </span><span className="text-teal-500">Shila</span></h1>
+              <h1 className="text-3xl cursor-pointer"><span className="text-cyan-500">Taksh </span><span className="text-teal-500">Shila</span></h1>
               </Link>
             </div>
 
