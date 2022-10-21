@@ -49,7 +49,6 @@ NEXT_PUBLIC_DB_URI=
 7. run ./exec.sh
 
 </details>
-All Done app should be running on port 3000
 
 
 #### Setup Admin Account 
