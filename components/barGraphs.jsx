@@ -286,9 +286,9 @@ export default function BarGraphs(props) {
                                                     </div>
                                                 </div>
                                             }
-                                            {pie2Data.allTasks.map((task) => {
+                                            {pie2Data.allTasks.map((task, idx) => {
                                                 return (
-                                                    <div key={task.userID} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
+                                                    <div key={task.userID + idx} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
                                                         <div className="flex flex-col">
                                                             <h1 className="text-lg font-medium text-gray-800">{task.description} <span className="shadow-md text-xs ml-4 p-1 bg-teal-500 rounded-full text-black">{task.type}</span></h1>
                                                             <h1 className="text-sm font-medium text-gray-800">{task.starTime}</h1>
@@ -369,9 +369,9 @@ export default function BarGraphs(props) {
                                                     </div>
                                                 </div>
                                             }
-                                            {pie1Data.allTasks.map((task) => {
+                                            {pie1Data.allTasks.map((task, idx) => {
                                                 return (
-                                                    <div key={task.userID} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
+                                                    <div key={task.userID + idx} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
                                                         <div className="flex flex-col">
                                                             <h1 className="text-lg font-medium text-gray-800">{task.description} <span className="shadow-md text-xs ml-4 p-1 bg-teal-500 rounded-full text-black">{task.type}</span></h1>
                                                             <h1 className="text-sm font-medium text-gray-800">{task.starTime}</h1>

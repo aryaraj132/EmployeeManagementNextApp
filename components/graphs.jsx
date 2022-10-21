@@ -3,7 +3,7 @@ import { fetchWrapper } from "../_utils/FetchWrapper";
 import { IoIosArrowDropright, IoMdCall, IoMdMail } from 'react-icons/io';
 import { userState } from "../_recoil/userState";
 import { useRecoilValue } from "recoil";
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar, Pie, Line } from 'react-chartjs-2';
 // import { Chart, ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler } from 'chart.js'
 import Chart from 'chart.js/auto';
 // Chart.register(ArcElement, LineElement, LinearScale, CategoryScale, PointElement, Title, Tooltip, Legend, Filler);
@@ -14,39 +14,21 @@ const options = {
             text: 'Weekly Task distribution of this month',
         },
     },
-    responsive: true,
+    tooltips: {
+        mode: 'label'
+    },
+    responsive: false,
     scales: {
         x: {
             stacked: true,
         },
         y: {
             stacked: true,
-        },
-    },
+        }
+    }
 };
 
 const labels = ['Week1 (1-7)', 'Week2 (8-14)', 'Week3 (15-21)', 'Week4 (22-EOM)'];
-
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: 'Work',
-            data: [50, 90, 80, 30],
-            backgroundColor: 'rgb(255, 99, 132)',
-        },
-        {
-            label: 'Break',
-            data: labels.map(() => 50),
-            backgroundColor: 'rgb(75, 192, 192)',
-        },
-        {
-            label: 'Meeting',
-            data: labels.map(() => 70),
-            backgroundColor: 'rgb(53, 162, 235)',
-        },
-    ],
-};
 
 export default function Graphs(props) {
     const nowDate = new Date();
@@ -186,7 +168,7 @@ export default function Graphs(props) {
     }, [userData, pie1Date, pie2Date, graphData, props.id])
     return (
         <>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto sm:px-4">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg">
                     <div className="px-6">
                         <div className="flex flex-wrap items-center p-6">
@@ -277,7 +259,7 @@ export default function Graphs(props) {
                         </div> */}
                         <div className="text-xl pt-5 grid grid-cols-[0.3fr_0.3fr_0.3fr_0.3fr] shadow-md border-b-2">
                             <div
-                                className={`flex items-center cursor-pointer justify-center ${toAdd == 'Today' &&
+                                className={`flex items-center cursor-pointer justify-center mr-1 ${toAdd == 'Today' &&
                                     'text-indigo-800 border-indigo-800 border-b-2'
                                     }`}
                                 onClick={() => {
@@ -288,7 +270,7 @@ export default function Graphs(props) {
                             </div>
 
                             <div
-                                className={`flex items-center cursor-pointer justify-center ${toAdd == 'Yesterday' &&
+                                className={`flex items-center cursor-pointer justify-center mr-1 ${toAdd == 'Yesterday' &&
                                     'text-indigo-800 border-indigo-800 border-b-2'
                                     }`}
                                 onClick={() => {
@@ -372,9 +354,9 @@ export default function Graphs(props) {
                                                     </div>
                                                 </div>
                                             }
-                                            {pie2Data.allTasks.map((task) => {
+                                            {pie2Data.allTasks.map((task, idx) => {
                                                 return (
-                                                    <div key={task.userID} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
+                                                    <div key={task.userID + idx} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
                                                         <div className="flex flex-col">
                                                             <h1 className="text-lg font-medium text-gray-800">{task.description} <span className="shadow-md text-xs ml-4 p-1 bg-teal-500 rounded-full text-black">{task.type}</span></h1>
                                                             <h1 className="text-sm font-medium text-gray-800">{task.starTime}</h1>
@@ -455,9 +437,9 @@ export default function Graphs(props) {
                                                     </div>
                                                 </div>
                                             }
-                                            {pie1Data.allTasks.map((task) => {
+                                            {pie1Data.allTasks.map((task, idx) => {
                                                 return (
-                                                    <div key={task.userID} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
+                                                    <div key={task.userID + idx} className="flex flex-row justify-between items-center p-2 bg-white bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg">
                                                         <div className="flex flex-col">
                                                             <h1 className="text-lg font-medium text-gray-800">{task.description} <span className="shadow-md text-xs ml-4 p-1 bg-teal-500 rounded-full text-black">{task.type}</span></h1>
                                                             <h1 className="text-sm font-medium text-gray-800">{task.starTime}</h1>
@@ -478,12 +460,23 @@ export default function Graphs(props) {
                             <>
                                 {pie1Data &&
                                     <>
-                                        
+
                                         <div className="flex flex-col">
-                                            {drawPie1 &&
-                                                <div className="mx-auto w-6/12 flex flex-row justify-center">
-                                                    <Bar options={options} data={drawGraph} />;
-                                                </div>
+                                            {drawGraph &&
+                                                <>
+                                                    <div className="lg:flex mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
+                                                        <Bar options={options} data={drawGraph} height={600} width={800} />;
+                                                    </div>
+                                                    <div className="md:flex lg:hidden mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
+                                                        <Bar options={options} data={drawGraph} height={400} width={600} />;
+                                                    </div>
+                                                    <div className="md:hidden mx-auto w-full sm:flex hidden flex-row justify-center overflow-auto">
+                                                        <Bar options={options} data={drawGraph} height={300} width={500} />;
+                                                    </div>
+                                                    <div className="sm:hidden mx-auto w-full flex flex-row justify-center overflow-auto">
+                                                        <Bar options={options} data={drawGraph} height={300} width={400} />;
+                                                    </div>
+                                                </>
                                             }
                                         </div>
                                     </>
