@@ -4,8 +4,9 @@ Live @ [https://employee-manage.araj.tk/](https://employee-manage.araj.tk/)
 
 ## Build Process
 
-* Using npm only
-
+<details>
+  <summary><h4>Using npm only</h4></summary>
+  
 1. Clone this repository
 2. install Node and npm
 3. run command "npm install"
@@ -25,8 +26,11 @@ NEXT_PUBLIC_DB_URI=
 8. run command "npm run dev" before editing any react file
 9. Done !!
 
-* Using Docker
+</details>
 
+<details>
+  <summary><h4>Using Docker</h4></summary>
+  
 1. Clone this repository
 2. Install Docker in your
 3. Create a MangoDB Cluster
@@ -44,6 +48,7 @@ NEXT_PUBLIC_DB_URI=
 6. run command sudo chmod +x exec.sh
 7. run ./exec.sh
 
+</details>
 All Done app should be running on port 3000
 
 
