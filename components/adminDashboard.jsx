@@ -52,7 +52,7 @@ export default function AdminDashboard() {
     }
     return (
         <section className="min-h-section bg-black bg-opacity-20 backdrop-blur-lg rounded-lg drop-shadow-lg p-2">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto sm:px-4">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg">
                     <div className="px-6">
                         <div className="flex flex-wrap justify-center">
