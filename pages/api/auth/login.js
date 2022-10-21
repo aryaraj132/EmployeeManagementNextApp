@@ -16,7 +16,7 @@ async function handler(req, res) {
             else{
             const validatePass = await bcrypt.compare(password, user.password)
                 if(!validatePass){
-                    res.status(400).json({error:"Password Did not match"})
+                    res.status(400).json({error:"Password did not match"})
                 }
                 else if(user.isAdmin || user.isActive){
                 const {password, __v,...other} = user._doc
