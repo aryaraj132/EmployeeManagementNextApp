@@ -20,7 +20,7 @@ module.exports = {
       },
       minHeight: {
         main: "calc(100vh - 4rem)",
-        section: "calc(100vh - 8rem)",
+        section: "calc(100vh - 5rem)",
       },
     },
   },
