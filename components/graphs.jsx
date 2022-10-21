@@ -460,23 +460,30 @@ export default function Graphs(props) {
                             <>
                                 {pie1Data &&
                                     <>
+                                        
+                                        <div className="flex flex-col ">
+                                            {drawPie1 &&
+                                            <>
 
-                                        <div className="flex flex-col">
-                                            {drawGraph &&
-                                                <>
-                                                    <div className="lg:flex mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
-                                                        <Bar options={options} data={drawGraph} height={600} width={800} />;
-                                                    </div>
-                                                    <div className="md:flex lg:hidden mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
-                                                        <Bar options={options} data={drawGraph} height={400} width={600} />;
-                                                    </div>
-                                                    <div className="md:hidden mx-auto w-full sm:flex hidden flex-row justify-center overflow-auto">
-                                                        <Bar options={options} data={drawGraph} height={300} width={500} />;
-                                                    </div>
-                                                    <div className="sm:hidden mx-auto w-full flex flex-row justify-center overflow-auto">
-                                                        <Bar options={options} data={drawGraph} height={300} width={400} />;
-                                                    </div>
-                                                </>
+                                            <div className="flex flex-col">
+                                                {drawGraph &&
+                                                   <>
+                                                   <div className="lg:flex mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
+                                                       <Bar options={options} data={drawGraph} height={600} width={800} />;
+                                                   </div>
+                                                   <div className="md:flex lg:hidden mx-auto lg:w-8/12 w-full hidden flex-row justify-center">
+                                                       <Bar options={options} data={drawGraph} height={400} width={600} />;
+                                                   </div>
+                                                   <div className="md:hidden mx-auto w-full sm:flex hidden flex-row justify-center overflow-auto">
+                                                       <Bar options={options} data={drawGraph} height={300} width={500} />;
+                                                   </div>
+                                                   <div className="sm:hidden mx-auto w-full flex flex-row justify-center overflow-auto">
+                                                       <Bar options={options} data={drawGraph} height={300} width={400} />;
+                                                   </div>
+                                               </>
+                                                }
+                                            </div>
+                                        </>
                                             }
                                         </div>
                                     </>
