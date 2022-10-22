@@ -64,13 +64,13 @@ export default function Home() {
         </div>
         <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
 
-        <div className="flex justify-start px-4 mt-10 ">
+        {/* <div className="flex justify-start px-4 mt-10 ">
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-4xl font-bold text-white p-2">
               Features
             </h1>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-wrap-reverse flex-row justify-around items-center my-4 p-4">
           <div className="flex justify-center items-center max-w-md md:max-w-half xl:max-w-lg">
@@ -82,7 +82,7 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col justify-center items-center md:items-start py-4 max-w-md md:max-w-half xl:max-w-lg">
-            <h1 className="text-4xl font-bold text-white">Admin Dashboard</h1>
+            <h1 className="text-4xl font-bold text-white"><span className="text-cyan-500">Admin</span> <span className="text-teal-100">Dashboard</span></h1> <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
             <p className="text-xl text-white">
               Manage employees&apos; data and access and see the work done by
               each of the employees
@@ -92,7 +92,7 @@ export default function Home() {
 
         <div className="flex flex-wrap flex-row justify-around items-center my-4 p-4">
           <div className="flex flex-col justify-center items-center md:items-start py-4 max-w-md md:max-w-half xl:max-w-lg">
-            <h1 className="text-4xl font-bold text-white">Daily Data</h1>
+            <h1 className="text-4xl font-bold text-white"><span className="text-teal-100">Daily</span> <span className="text-cyan-100">Data</span></h1> <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
             <p className="text-xl text-white">
               Pie charts to show the work done by an employee on daily basis.
               Choose a date and see work done on that day
@@ -118,7 +118,7 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col justify-center items-center md:items-start py-4 max-w-md md:max-w-half xl:max-w-lg">
-            <h1 className="text-4xl font-bold text-white">Weekly Data</h1>
+            <h1 className="text-4xl font-bold text-white"><span className="text-cyan-100">Weekly</span> <span className="text-teal-100">Data</span></h1> <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
             <p className="text-xl text-white">
               Bar Graphs to show all the work done by an employee in current
               month on weekly basis
