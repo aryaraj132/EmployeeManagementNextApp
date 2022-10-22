@@ -82,7 +82,7 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col justify-center items-center md:items-start py-4 max-w-md md:max-w-half xl:max-w-lg">
-            <h1 className="text-4xl font-bold text-white"><span className="text-cyan-500">Admin</span> <span className="text-teal-100">Dashboard</span></h1> <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
+            <h1 className="text-4xl font-bold text-white"><span className="text-cyan-100">Admin</span> <span className="text-teal-100">Dashboard</span></h1> <hr className="border-transparent h-2 w-full bg-gradient-to-b from-transparent via-slate-500 to-transparent opacity-40" />
             <p className="text-xl text-white">
               Manage employees&apos; data and access and see the work done by
               each of the employees
