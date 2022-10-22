@@ -59,7 +59,7 @@ export default function Nav() {
           <div className="flex items-center">
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link href="/dashboard"><a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a></Link>
+                <Link href="/dashboard"><a className="bg-cyan-500 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a></Link>
               </div>
             </div>
             <div className="hidden md:block">
@@ -72,7 +72,7 @@ export default function Nav() {
                     </a>
                   </Link>
                 ) : (
-                  <button type="button" onClick={signOut} className="px-4 py-2 text-md bg-teal-500 text-white rounded-lg font-medium" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                  <button type="button" onClick={signOut} className="px-4 py-2 text-md bg-teal-500 text-white rounded-lg font-medium" role="menuitem" tabindex="-1" id="user-menu-item-2">Log out</button>
                 )}
               </div>
             </div>
