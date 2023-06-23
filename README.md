@@ -2,7 +2,7 @@
 
 An app where employers can keep a check on their employees’ work done every particular day. Graphical representation of each employees’ work with pie charts (daily) and bar graph (weekly).
 
-Live @ [https://employee-manage.araj.tk/](https://employee-manage.araj.tk/)
+Live @ [https://employee-manage.heyaryan.in/](https://employee-manage.heyaryan.in/)
 
 ## Build Process
 
